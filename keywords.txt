@@ -1,0 +1,11 @@
+ESP8266OTA	KEYWORD1
+	
+setup	KEYWORD2
+setTitle	KEYWORD2
+setBanner	KEYWORD2
+setBuild	KEYWORD2
+setBranch	KEYWORD2
+setDeviceInfo	KEYWORD2
+setFooter	KEYWORD2
+setUpdaterUi	KEYWORD2
+updatePasswd	KEYWORD2
