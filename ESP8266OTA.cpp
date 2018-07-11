@@ -165,6 +165,17 @@ void ESP8266OTA::setUpdaterUi(String title,String banner,String build,String bra
     _branch = branch;
     _deviceInfo = deviceInfo;
     _footer = footer;
+
+}
+
+void ESP8266OTA::setUpdaterUi(String title,String banner,String build,String branch,String footer)
+{
+    _title = title;
+    _banner = banner;
+    _build = build;
+    _branch = branch;
+    _deviceInfo = "ChipId : " + String(ESP.getChipId());
+    _footer = footer;
 }
 
 void ESP8266OTA::updatePasswd(const char *newPasswd)

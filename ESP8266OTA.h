@@ -38,7 +38,12 @@ class ESP8266OTA
     void setBranch(String branch);
     void setDeviceInfo(String deviceInfo);
     void setFooter(String footer);
+
+    //setup web UI
     void setUpdaterUi(String title,String banner,String build,String branch,String deviceInfo,String footer);
+    //setup web UI , with chip ID auto generated
+    void setUpdaterUi(String title,String banner,String build,String branch,String footer);
+
     void updatePasswd(const char *newPasswd);
 };
 #endif

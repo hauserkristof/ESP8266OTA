@@ -30,7 +30,12 @@ void setup(void){
 
   MDNS.begin(host);
   
+  //set web UI
   otaUpdater.setUpdaterUi("Title","Banner","Build : 0.01","Branch : master","Device info : ukn","footer");
+
+  //setup web UI , with chip ID auto generated
+  //otaUpdater.setUpdaterUi("Title","Banner","Build : 0.01","Branch : master","footer");
+
   otaUpdater.setup(&httpServer);
   httpServer.begin();
 
