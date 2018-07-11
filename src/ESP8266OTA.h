@@ -10,8 +10,8 @@ class ESP8266OTA
   private:
     bool _serial_output;
     ESP8266WebServer *_server;
-    char * _username;
-    char * _password;
+    String _username;
+    String _password;
     bool _authenticated;
 
     String _title;
@@ -28,9 +28,9 @@ class ESP8266OTA
 
     void setup(ESP8266WebServer *server, const char * path);
 
-    void setup(ESP8266WebServer *server, const char * username, const char * password);
+    void setup(ESP8266WebServer *server, String username, String password);
 
-    void setup(ESP8266WebServer *server, const char * path, const char * username, const char * password);
+    void setup(ESP8266WebServer *server, const char * path, String username, String password);
 
     void setTitle(String title);
     void setBanner(String banner);
@@ -43,7 +43,7 @@ class ESP8266OTA
     void setUpdaterUi(String title,String banner,String build,String branch,String deviceInfo,String footer);
     //setup web UI , with chip ID auto generated
     void setUpdaterUi(String title,String banner,String build,String branch,String footer);
-
-    void updatePasswd(const char *newPasswd);
+    //update passsword
+    void updatePassword(String password);
 };
 #endif

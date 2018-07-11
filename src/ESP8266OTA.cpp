@@ -10,8 +10,8 @@ ESP8266OTA::ESP8266OTA(bool serial_debug)
 {
   _serial_output = serial_debug;
   _server = NULL;
-  _username = NULL;
-  _password = NULL;
+  _username = "";
+  _password = "";
   _authenticated = false;
 
   _title = "Firmware updater";
@@ -24,29 +24,29 @@ ESP8266OTA::ESP8266OTA(bool serial_debug)
 
 void ESP8266OTA::setup(ESP8266WebServer *server)
 {
-  setup(server, NULL, NULL);
+  setup(server, "", "");
 }
 
 void ESP8266OTA::setup(ESP8266WebServer *server, const char * path)
 {
-  setup(server, path, NULL, NULL);
+  setup(server, path, "", "");
 }
 
-void ESP8266OTA::setup(ESP8266WebServer *server, const char * username, const char * password)
+void ESP8266OTA::setup(ESP8266WebServer *server, String username, String password)
 {
   setup(server, "/update", username, password);
 }
 
 
-void ESP8266OTA::setup(ESP8266WebServer *server, const char * path, const char * username, const char * password)
+void ESP8266OTA::setup(ESP8266WebServer *server, const char * path, String username, String password)
 {
     _server = server;
-    _username = (char *)username;
-    _password = (char *)password;
+    _username = username;
+    _password = password;
 
     // handler for the /update form page
     _server->on(path, HTTP_GET, [&](){
-      if(_username != NULL && _password != NULL && !_server->authenticate(_username, _password))
+      if(_username != "" && _password != "" && !_server->authenticate(_username.c_str(), _password.c_str()))
         return _server->requestAuthentication();
 
       //get page
@@ -92,7 +92,7 @@ void ESP8266OTA::setup(ESP8266WebServer *server, const char * path, const char *
         if (_serial_output)
           Serial.setDebugOutput(true);
 
-        _authenticated = (_username == NULL || _password == NULL || _server->authenticate(_username, _password));
+        _authenticated = (_username == "" || _password == "" || _server->authenticate(_username.c_str(), _password.c_str()));
         if(!_authenticated){
           if (_serial_output)
             Serial.printf("Unauthenticated Update\n");
@@ -178,7 +178,7 @@ void ESP8266OTA::setUpdaterUi(String title,String banner,String build,String bra
     _footer = footer;
 }
 
-void ESP8266OTA::updatePasswd(const char *newPasswd)
+void ESP8266OTA::updatePassword(String password)
 {
-  _password = (char *)newPasswd;
+  _password = password;
 }
