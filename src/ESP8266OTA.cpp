@@ -14,8 +14,8 @@ ESP8266OTA::ESP8266OTA(bool serial_debug)
   _password = "";
   _authenticated = false;
 
-  _title = "Firmware updater";
-  _banner = "Firmware updater";
+  _title = "OTA updater";
+  _banner = "OTA updater";
   _build = "1.0b";
   _branch = "dev";
   _deviceInfo = "esp8266-dev";
