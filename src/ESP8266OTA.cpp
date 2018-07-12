@@ -19,7 +19,7 @@ ESP8266OTA::ESP8266OTA(bool serial_debug)
   _build = "Build : ";
   _branch = "Branch : ";
   _deviceInfo = "ChipId : " + String(ESP.getChipId());
-  _footer = "ChipCE";
+  _footer = "ESP8266 OTA Updater";
 }
 
 void ESP8266OTA::setup(ESP8266WebServer *server)
