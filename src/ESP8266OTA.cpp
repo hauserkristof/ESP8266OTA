@@ -10,16 +10,7 @@ ESP8266OTA::ESP8266OTA(bool serial_debug)
 {
   _serial_output = serial_debug;
   _server = NULL;
-  _username = "";
-  _password = "";
   _authenticated = false;
-
-  _title = "OTA updater";
-  _banner = "OTA updater";
-  _build = "Build : ";
-  _branch = "Branch : ";
-  _deviceInfo = "ChipId : " + String(ESP.getChipId());
-  _footer = "ESP8266 OTA Updater";
 }
 
 void ESP8266OTA::setup(ESP8266WebServer *server)

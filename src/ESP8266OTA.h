@@ -10,16 +10,16 @@ class ESP8266OTA
   private:
     bool _serial_output;
     ESP8266WebServer *_server;
-    String _username;
-    String _password;
+    String _username = "";
+    String _password = "";
     bool _authenticated;
 
-    String _title;
-    String _banner;
-    String _build;
-    String _branch;
-    String _deviceInfo;
-    String _footer;
+    String _title = "OTA updater";
+    String _banner = "OTA updater";
+    String _build = "Build : ";
+    String _branch = "Branch : ";
+    String _deviceInfo = "ChipId : " + String(ESP.getChipId());
+    String _footer = "ESP8266 OTA Updater";
 
   public:
     ESP8266OTA(bool serial_debug=false);
